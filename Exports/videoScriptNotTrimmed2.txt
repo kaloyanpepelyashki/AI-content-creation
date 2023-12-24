@@ -1,0 +1,30 @@
+
+[Scene 1]: 
+(Visual: A Black Screen)
+Text on screen: “New Arrival at Denmark's Best Electronics Retailer!” 
+Voice-over: “Get ready for an exciting peek! We just received a hot new addition to our collection!” |
+ 
+[Scene 2]: 
+(Visual: A box with the logo of the latest smartphone)
+Text on screen: “The [latest smartphone] Unboxing” 
+Voice-over: “Let’s take a swift unboxing journey of the stunning, new [latest smartphone]"|
+
+[Scene 3]: 
+(Visual: The Smartphone is removed from the box)
+Text on screen: “Welcome the new tech wonder” 
+Voice-over: "Look at that sleek design! A fusion of beauty and top-notch technology!” |
+
+[Scene 4]: 
+(Visual: All accessories being showcased)
+Text on screen: “What’s in the box?” 
+Voice-over: "The [latest smartphone] comes with [mention prominent accessories and features]." |
+
+[Scene 5]: 
+(Visual: Highlight main features of the smartphone)
+Text on screen: “Features Highlights” 
+Voice-over: “Now, let's dive into the key features! [Mention the main features of the smartphone]” |
+
+[Scene 6]: 
+(Visual: Display the smartphone with the price tag and website link)
+Text on screen: “Get it now from our webshop!” 
+Voice-over: “Excited yet? Visit our webshop to secure your [latest smartphone] today and join our ever-growing tech community!” |
