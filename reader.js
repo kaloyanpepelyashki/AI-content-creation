@@ -1,5 +1,6 @@
 const fs = require("node:fs/promises");
 
+//Reads the file and returns the content of it
 const readFile = async () => {
   try {
     const data = await fs.readFile("VideoScriptNotTrimmed2.txt", "utf8");
@@ -10,6 +11,7 @@ const readFile = async () => {
   }
 };
 
+//Sanitizes the data and shifts it
 async function shapeData(data) {
   try {
     const trimmedData = await data;

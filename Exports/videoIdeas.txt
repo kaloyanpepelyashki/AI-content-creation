@@ -1,23 +1,19 @@
-1. "Latest in Technology" Series: A regular video series featuring the most recent and exciting technology products available in your store. You can highlight the specs, features, and why they're a must-have for customers.
+1. "Everyday Electronics Explained": A series of videos that simplify and explain the working of common electronic items like smartphones, tablets, or laptops. The use of animated diagrams and infographics can help in visual understanding. This has the potential to attract a wide audience and include curiosity-driven engagement.
 
-2. "Top 5 Must-have Electronics": Feature five popular electronic items with reasons for why viewers should have them. This could be based on the latest electronics, trending items, or even customer favorites.
+2. "Innovation of the Week": Share new and upcoming electronics innovation every week. This can lead to increased viewership from people curious about advancements in electronics and could lead to discussions and debates in the comments section.
 
-3. "Troubleshooting your Devices": Short, informative videos to help customers troubleshoot common and minor technical issues with their electronics. 
+3. "DIY Electronic Projects": Create engaging DIY videos of small electronic projects that users can try at their homes. This can engage a hobbyist audience and encourage them to share their project's results, leading to more user-generated content and engagement.
 
-4. "Product Unboxing and Review": A video that shows the unboxing process of a specific product, highlighting the features and specs. It gives potential customers an exclusive sneak-peek of what they are about to invest in.
+4. "Behind the Scenes of Ebits": Share videos about the company's culture, day-to-day operations, and employees – humanizing the company and strengthening the relationship with the community.
 
-5. "DIY Tech Fixes": Here, you can offer simple DIY tips for common issues faced using technical gadgets, like increasing router speed or cleaning a laptop. 
+5. "The Journey of an Order": Show the journey of an item from the order placed on the webshop to its arrival at a customer's door. This can build transparency and trust and will encourage more people to shop from the Ebits webshop.
 
-6. "Device Comparisons": Compare different models of a similar product, such as a comparison between different brands of smartphones or laptops.
+6. "Ask the Experts": Hold live video sessions where viewers can ask electronics questions and get real-time answers. This is an excellent way to increase live viewership, comments, and shares. 
 
-7. "Innovation Friday": A video showcasing innovation in electronics development and embedded software development. This can include the latest developments, challenges, and solutions in this field.
+7. "The Future of Electronics": A series of videos predicting and explaining future tech trends. This will attract a forward-thinking audience and stimulate conversation and debate.
 
-8. "Newbie Guide to Electronics": A segment dedicated to helping beginners understand embedded and software development, starting with the basics.
+8. "Product Showcases": Show off the products sold in your webshop. Highlight unique product features, do comparisons and make sure to link the product in the post description to drive traffic to the webshop.
 
-9. "The Future of Electronics": A video showcasing upcoming and futuristic tech products or ideas.
+9. "Ebits Community Spotlight": Highlight and appreciate members of the Ebits community who have interesting or innovative electronics projects. This can encourage others to share their projects and foster a sense of community.
 
-10. "Product Teasers": Tease upcoming products or services. This would ramp up excitement and anticipation amongst your followers.
-
-11. "Tech in a nutshell": Brief and concise explanation of complex concepts or products in the world of electronics.
-
-All these formats can be visually stimulating and engaging with the use of AI. For the more complex formats, you can use AI to create clear and concise animations, diagrams or graphics to help explain the concepts or products. Graphics can also be used to highlight product features or make comparisons.
+10. "Featured Customer Stories": Share testimonials and narratives from customers who have benefited from Ebits' products. Encourage customers to share their own stories, creating shareable user-generated content.

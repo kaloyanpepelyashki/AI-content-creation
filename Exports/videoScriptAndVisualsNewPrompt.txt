@@ -1,0 +1,21 @@
+(Scene 1: [Visuals: A bold, electric blue splash screen, embossed with sleek silver logo of "Ebits", the small electronics retailer, subtly gleaming. At the bottom right, a tiny 3D white Denmark outline map.] Script: "Welcome to the interweaving world of Ebits, your go-to electronics hub here in beautiful Denmark. |")
+
+(Scene 2: [Visuals: A quick montage of vividly colored, rotating 3D models of popular electronics against a striking black background. Items such as smartphones, gaming consoles, laptops, smartwatches, tablet PCs, and headphones.] Script: "From the latest smartphones to the gaming gadgets, if it beeps or blinks, Ebits got it! |")
+
+(Scene 3: [Visuals: On a light-colored wooden table, a smartphone and TV screen sprung to life from the 3D animation. Miniature workers climbing, assembling the components displaying the manufacturing process.] Script: "Fascinated how these marvels are made? We've got you covered with our 'How It's Made: Electronics Edition'! |")
+
+(Scene 4: [Visuals: A CGI scene of people watching, huddling around a brightly glowing orb in different shades of blue. The orb radiates lines of complex, sci-fi style codes, symbolizing software development.] Script: "Or dip your toes into the mesmerizing waters of software with our 'Software Development 101'. |")
+
+(Scene 5: [Visuals: A thunderstorm-blue futuristic background, supporting a montage of various hypothetical gadgets and animations. 3D renderings of futuristic smart glasses, robot butlers, and autonomous cars.] Script: "Curious about the electronics of the future? Engage in thrilling discussions over future tech trends in our special series. |")
+
+(Scene 6: [Visuals: A rush to an inviting, virtual DIY workshop filled with electronics blueprints, a soldering iron, miniature drones circling and other related tools. Hints of warm oranges and yellows.] Script: "Look, we all run into glitches. Join us at 'Repair it with Ebits', and we'll guide you through the most common electronic hiccups. |")
+
+(Scene 7: [Visuals: A virtual stage lit in soft ambers and umbers, spotlighting chairs. Each chair filled with a holographic representation of tech experts and QC avatars of creators.] Script: "Or grab a coffee and tune in to our 'Meet the Creators' series. Engage live with the innovators shaping the electronics and software industry. |")
+
+(Scene 8: [Visuals: A swift transition to a dynamic virtual newsroom. Graphics on the main screen display headlines about recent tech developments; the screen's edges cycle through latest gadgets.] Script: "Keep your tech knowledge up to date! 'Tech News with Ebits' brings you up to the minute updates and reviews. |")
+
+(Scene 9: [Visuals: A suspenseful, dark velvet curtain just starting to rise. Behind it, a vague silhouette of a mystery gadget.] Script: "Feeling lucky? Play 'Guess the Gadget' and stand a chance to win discounts on the Ebits webshop! |")
+
+(Scene 10: [Visuals: Gently pull back to reveal a richly detailed virtual arcade of game development and animations. Neon wires trace the outlines of characters and gaming systems.] Script: "For our gaming enthusiasts, take a peek 'Behind the Screen'. Dive into the captivating complexity of game development and animation with expert insights. |")
+
+(Scene 11: [Visuals: Return back to the Ebits logo with contact details and the webshop URL appearing underneath. Background Color scheme: the same bold, electric blue from the intro scene.] Script: "So, what are you waiting for? Join the exciting world of Ebits and expand your tech horizons! Dive in. We are just a click away at Ebits webshop. |")
