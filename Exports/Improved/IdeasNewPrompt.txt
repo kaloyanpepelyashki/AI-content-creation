@@ -1,0 +1,29 @@
+1. "Slice of Life: An Integrated Circuit's Journey" - A visually dynamic exploration of how an integrated circuit moves through an embedded system, helping viewers understand the nuances of its functionality. 
+
+2. "3D Printing PCBs: The Future of Electronics" - Delve into the trend of 3D printed PCBs, demonstrating its process, its uses and its impact on the electronics landscape.
+
+3. "Interactive Guide to Raspberry Pi" - An interactive, step-by-step guide to working with Raspberry Pi, focusing on simple and complex projects that can inspire electronics enthusiasts. 
+
+4. "Arduino Unplugged: Exploring the Possibilities" - Focused on Arduino, this video would take viewers on a virtual tour of its potential, showcasing various projects and prototypes developed using this open-source platform.
+
+5. "AI in Embedded Systems: Changing the World" - Highlight how AI is driving advancements in embedded systems showcasing real-world examples and exploring future potentials.
+
+6. "Demystifying FPGA" - A simple yet comprehensive guide to Field Programmable Gate Arrays (FPGA), taking viewers through its origins, functionality, and application in modern technology.
+
+7. "Weekly Gadget Review" - Regular product reviews, focusing on new and trending electronics products available at Ebits. Using AI-generated 3D models and animation to visualize the internal workings of the gadgets.
+
+8. "Ebits Electronics Tutorials: DIY Home Automation System" - A series that provides a simple, step-by-step guide to creating various home automation systems using products available at Ebits.
+
+9. "Electronics History: A Dive into the Evolution of Microprocessors" - Detailing the evolution of microprocessors, this video would visually present the timeline and the key breakthroughs and innovations.
+
+10. "IoT and Smart Home Technology: A Closer Look" - A visually-rich, deep dive into the IoT and Smart Home Technology, demonstrating use-cases, prototypes and possibilities by leveraging product range and solutions offered by Ebits.
+
+11. "Decoding Encryption: A Visual Journey" - An insightful exploration of encryption with an aim to simplify the concept, detailing its significance in software development and its widespread use. 
+
+12. "Coding Quick Tips: Boosting Your Skills" - A series of video content focusing on shortcuts, tips and best practices in software development, delivered in bite-sized, easily digestible chunks.
+
+13. "What's Trending: Analysis on Electronics Market Trends" - Regular updates on market trends, emerging technologies and innovations in the field of electronics and software development. 
+
+14. "Virtual Lab - Simulating Electronics Circuits" - Create a virtual electronics laboratory where different circuits are simulated and analyzed, providing practical application of electronics concepts.
+   
+15. "Guess the Gadget: Interactive Electronics Quiz" - A fun and interactive video series where viewers are challenged to identify various electronics components and gadgets, boosting engagement and driving regular audience interaction.

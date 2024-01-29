@@ -1,0 +1,21 @@
+1. "Soldering for Beginners": A step-by-step guide on how to solder, perfect for anyone new to electronics. Visuals will include close-ups of soldering process, animated diagrams for the correct way to solder and safety tips.
+
+2. "Soldering Irons Decoded": An overview of the different types of soldering irons and their applications. Visuals can include infographic comparisons between different types of soldering irons, animated demonstrations of how they work.
+
+3. "Safely Soldering": A video focusing on safety precautions to take while soldering. Animated demonstrations of the dos and don’ts when soldering with a focus on protective gear and safe practices.
+
+4. "Top 5 Soldering Mistakes": List and explanations of common soldering mistakes and how to avoid them. Visuals will include side-by-side comparisons of correct and incorrect soldering techniques.
+
+5. "Soldering Projects to Try": Showcase DIY soldering projects that range from beginner to advanced levels. Could include a virtual ‘tour’ of completed projects and stepwise representation of how they're made.
+
+6. "Science of Soldering": Detailed video on why soldering works on a scientific level. Could use animated diagrams and simulations to explain bonding of metals on a molecular level.
+
+7. "Eco-friendly Soldering": A video emphasizing the importance of responsible disposal of electronic waste and usage of eco-friendly materials in soldering. Infographics to illustrate impact on environment and precautions.
+
+8. "Soldering Troubleshooting": Addressing common issues faced during soldering and their countermeasures. 3D animations showcasing these problems and their solutions.
+
+9. "Beyond Basic Soldering": A video introducing advanced soldering techniques and tools. Animated demonstrations of these methods and their applications.
+
+10. "Soldering Quiz Time": An interactive video quiz based on the soldering information covered in the previous videos. Employing fun and engaging animated visuals for questions and results, boosting community engagement.
+
+Each video will subtly promote Ebits' brand by demonstrating tools and materials available in Ebits' webshop and encourage viewers to partake in community discussions and further learning opportunities.

@@ -1,10 +1,30 @@
 require("dotenv").config();
 const OpenAi = require("openai");
-const apiKey = process.env.APIKEY;
+const apiKey = process.env.OPENAI_APIKEY;
+const fs = require("fs");
 
 const aiClient = new OpenAi({
   apiKey: apiKey,
 });
+
+let visualsURLs = [];
+
+const writeToFile = async (URLs) => {
+  try {
+    const content = URLs.join("\n");
+
+    fs.writeFile("Exports/finaltest/URLs.txt", content, (err) => {
+      if (err) {
+        console.error("Error writing URLs to file:", err);
+      } else {
+        console.log(`Data written`);
+      }
+    });
+  } catch (e) {
+    console.log("!!======!!");
+    console.log("Error writing URLs to file");
+  }
+};
 
 const generateVisuals = async (promptText) => {
   let response = await aiClient.images
@@ -12,12 +32,17 @@ const generateVisuals = async (promptText) => {
       model: "dall-e-3",
       prompt: `Generate an image for: ${promptText}. The style should be animated`,
       size: "1024x1024",
+      quality: "standard",
       n: 1,
     })
     .then((response) => {
       console.log(promptText);
       console.log(`Img url: ${response.data[0].url}`);
       console.log("-------");
+
+      visualsURLs.push(
+        `Prompt text: ${promptText} ; URL: ${response.data[0].url}`
+      );
     })
     .catch((e) => {
       console.log(`Error generating visuals : ${e}`);
@@ -50,14 +75,12 @@ const sanitizeContent = (dataToSanitize) => {
 
 const extractVisuals = (content) => {
   try {
+    //A function to sanitize each of the array items
     function sanitize(element) {
       return element.replace("[Visuals:", " ").replace("]", " ");
     }
-    // let sanitizedArray = await sanitizeContent();
-    const regex = /\[(.*?)\]/g;
 
-    // sanitizedArray.shift();
-    console.log("sanitizedArray:", content);
+    const regex = /\[(.*?)\]/g;
 
     let visualsArray = [];
     // Use match to find all occurrences of the pattern
@@ -85,6 +108,7 @@ const extractVisuals = (content) => {
 async function videoGenerator(rawScriptData) {
   // const visuals = await extractVisuals();
   // generateVisuals(visualsToGenerate[0]);
+  visualsURLs = [];
   console.log(`raw script data : ${rawScriptData}`);
   try {
     let sanitizedData = sanitizeContent(rawScriptData);
@@ -93,10 +117,37 @@ async function videoGenerator(rawScriptData) {
       let visualsPrompts = extractVisuals(sanitizedData);
       if (visualsPrompts != null && visualsPrompts.length > 0) {
         console.log(`Extracted visuals : ${visualsPrompts}`);
-        visualsPrompts.forEach((prompt) => {
-          setTimeout(async () => {
-            await generateVisuals(prompt);
-          }, 2000);
+
+        // visualsPrompts
+        //   .forEach((prompt) => {
+        //     setTimeout(async () => {
+        //       await generateVisuals(prompt);
+        //     }, 15000);
+        //   })
+        //   .then(async () => {
+        //     await writeToFile(visualsURLs);
+        //   });
+        async function processPrompts() {
+          for (const prompt of visualsPrompts) {
+            await generateVisualsWithDelay(prompt, 10000); // 10-second delay
+          }
+
+          // After all prompts are processed, write to file
+          await writeToFile(visualsURLs);
+        }
+
+        async function generateVisualsWithDelay(prompt, delay) {
+          return new Promise((resolve) => {
+            setTimeout(async () => {
+              await generateVisuals(prompt);
+              resolve();
+            }, delay);
+          });
+        }
+
+        // Call the main function
+        processPrompts().then(async () => {
+          await writeToFile(visualsURLs);
         });
       } else {
         console.log("Error with visualsPrompts array");

@@ -1,28 +1,40 @@
 require("dotenv").config();
 const OpenAi = require("openai");
-const apiKey = process.env.APIKEY;
+const apiKey = process.env.OPENAI_APIKEY;
 const fs = require("fs");
 
 const visualsGenerator = require("./visualsGenerator.js");
+const scriptExtractor = require("./scriptExtractor.js");
+const videoGenerator = require("./videoGenerator.js");
 
 const openAi = new OpenAi({
   apiKey: apiKey,
 });
 
-function sanitizeInput(dirtyInput) {
+const sanitizeContent = (dataToSanitize) => {
   try {
-    let sanitizedOutput = dirtyInput.trim().replace(/\n/g, "");
+    console.log(`Data to sanitize : ${dataToSanitize}`);
+    const newArray = dataToSanitize.split("(");
 
-    console.log(`Sanitized output first itereation: ${sanitizedOutput}`);
+    function sanitize(element) {
+      return element.replace(/\n/g, " ");
+    }
 
-    return sanitizedOutput;
+    let sanitizedArray = newArray.map(sanitize);
+
+    if (sanitizedArray.length > 1 && sanitizedArray != null) {
+      return sanitizedArray;
+    } else {
+      console.log("sanitizedArray is empty");
+      return null;
+    }
   } catch (e) {
-    console.log(`Error accessing content from fitst attempt error: ${e}`);
+    console.log(`Error sanitizing content : ${e}`);
   }
-}
+};
 
 const writeToFile = (content, purpose) => {
-  const fileName = `Exports/video${purpose}.txt`;
+  const fileName = `Exports/finaltest/${purpose}.txt`;
   try {
     fs.writeFile(fileName, content, function (err) {
       if (err) {
@@ -46,7 +58,7 @@ async function main() {
         {
           role: "system",
           content:
-            "You are a helpfull marketing and content creation expert. You will assist a small company with a marketing campaign taking place in instagram. The company that would benefit from the marketing campaign is a small electronics retailer based in Denmark. The company's primary goal is to attract more customers to the web shop of theirs and also to the community. Prioritize ideas that maximize engagement metrics like views, likes, shares, and comments. Aim to increase brand interest and drive traffic to the webshop.",
+            "You are a highly creative and informed content strategist specializing in the electronics retail sector. Your primary goal is to generate short video ideas that are compelling, informative, and perfectly tailored to the interests of electronics enthusiasts and professionals. Emphasize innovation and creativity in your suggestions, ensuring each idea is visually engaging and suitable for AI-driven, no-face video formats. Your outputs should reflect an in-depth understanding of current trends in electronics, embedded systems, and software development.",
         },
         {
           role: "user",
@@ -57,7 +69,7 @@ async function main() {
     });
 
     writeToFile(request.choices[0].message.content, "IdeasNewPrompt");
-    let sanitizedOutputFirst = sanitizeInput(
+    let sanitizedOutputFirst = sanitizeContent(
       request.choices[0].message.content
     );
 
@@ -72,8 +84,8 @@ async function main() {
             },
             {
               role: "user",
-              content: `Create a script for a short-form video of 50-60 seconds on a randomly selected topic from ${sanitizedOutputFirst}. Begin with a captivating hook to immediately engage the viewer. The script should be structured in a series of scenes, each ending with a "|". For each scene, provide a concise yet engaging and descriptive script and a detailed description of the corresponding visuals.The visual descriptions must be enclosed between '[Visuals:' and ']', positioned before the script for each scene. These descriptions should be highly detailed, focusing on color schemes, shapes, and specific compositions to facilitate high-fidelity image generation by DALL-E. Provide more specific keywords to guide DALL-E 3 to produce precisely what is needed. Use descriptive adjectives in the prompt to help you achieve specificity. The style for the visuals is 'vector artwork'. Ensure that the visuals are descriptive, visually appealing, and directly relevant to the content of the scene. Adding layers to the description would significantly improve the response. Avoid suggesting visuals that contain elements DALL-E cannot interpret from the text alone. Each scene should be distinct and formatted as follows:
-              (Scene X: [Visuals: Describe the visuals in rich detail, emphasizing color, shape, and composition. Use descriptive adjectives in the prompt to help you achieve specificity. The visuals should complement the script] Script: Provide a script segment that is engaging, descriptive, informative and captivating. Each script segment for each scene must reveal a unique part of the story told in the video. | )
+              content: `Create a script for a short-form video of 60 seconds on a randomly selected topic from ${sanitizedOutputFirst}. Begin with a captivating hook to immediately engage the viewer. Add a spice to the content, excite the user about the new things they are about to learn. The final product, composed by the script generated, must be exciting, interesting, captivating. The script should be structured in a series of scenes, each ending with a "|". For each scene, provide a concise yet engaging and descriptive script and a detailed description of the corresponding visuals.The visual descriptions must be enclosed between '[Visuals:' and ']', positioned before the script for each scene. These descriptions should be highly detailed, focusing on color schemes, shapes, and specific compositions to facilitate high-fidelity image generation by DALL-E. Provide more specific keywords to guide DALL-E 3 to produce precisely what is needed. Use descriptive adjectives in the prompt to help you achieve specificity. The style for the visuals is 'vector artwork'. Ensure that the visuals are descriptive, visually appealing, and directly relevant to the content of the scene. Adding layers to the description would significantly improve the response. Avoid suggesting visuals that contain elements DALL-E cannot interpret from the text alone. Always apply the formatting. Each scene should be distinct and formatted as follows:
+              (Scene X: [Visuals: Describe the visuals in rich detail, emphasizing color, shape, and composition. Use descriptive adjectives in the prompt to help you achieve specificity. The visuals should complement the script] **Script: Provide a script segment that is engaging, descriptive, informative and captivating. Each script segment for each scene must reveal a unique part of the story told in the video.** | )
               Remember, the video is a no-face, short-video format, focusing on the narrative and AI-generated visuals to maintain viewer attention throughout`,
             },
           ],
@@ -84,13 +96,20 @@ async function main() {
             response.choices[0].message.content != null &&
             response.choices[0].message.content.length > 0
           ) {
-            //For testing purposes
-            console.log(response.choices[0].message.content);
-            visualsGenerator(response.choices[0].message.content);
+            const generatedContent = sanitizeContent(
+              response.choices[0].message.content
+            );
+            // //For testing purposes
+            // console.log(generatedContent);
+            visualsGenerator(generatedContent);
+            const script = scriptExtractor(generatedContent);
+
+            videoGenerator(script);
+
             //Saves the generated raw script data to a file for testing purposes.
             writeToFile(
               response.choices[0].message.content,
-              "ScriptAndVisualsNewPrompt"
+              "ScriptAndVisuals"
             );
           } else {
             console.log("Generated content was empty");

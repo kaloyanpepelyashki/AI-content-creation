@@ -1,41 +1,26 @@
 const fs = require("node:fs/promises");
+const videoGenerator = require("./videoGenerator.js");
 
-//Reads the file and returns the content of it
-const readFile = async () => {
+async function extractFromFile() {
   try {
-    const data = await fs.readFile("VideoScriptNotTrimmed2.txt", "utf8");
-    return data.trim();
-  } catch (err) {
-    console.log(`Error getting data from a file: ${err}`);
-    throw err;
+    console.log("in extractFromFile");
+    const data = await fs.readFile("Exports/finaltest/script.txt", "utf8");
+    const splitData = data.split("\n");
+    console.log("split data: ", splitData);
+    return splitData;
+  } catch (e) {
+    console.log("Error reading from file: ", e);
+  }
+}
+
+const main = async () => {
+  try {
+    const script = await extractFromFile();
+
+    videoGenerator(script);
+  } catch (e) {
+    console.log("Error: ", e);
   }
 };
 
-//Sanitizes the data and shifts it
-async function shapeData(data) {
-  try {
-    const trimmedData = await data;
-    const splitArray = trimmedData.split("|");
-    let newArray = [];
-    splitArray.forEach((element) => {
-      let sanitizedElement = element.trim().replace(/\n/g, "");
-      newArray.push(sanitizedElement);
-    });
-
-    if (newArray.length > 0) {
-      return newArray;
-    } else {
-      return null;
-    }
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-async function parseContent() {
-  console.log(await shapeData(readFile()));
-}
-
-parseContent();
-
-module.exports = parseContent();
+main();
