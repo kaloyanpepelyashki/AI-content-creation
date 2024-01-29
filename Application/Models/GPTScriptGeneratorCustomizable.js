@@ -5,9 +5,11 @@ const GPTScriptGenerator = require("./GPTScriptGenerator");
 //The class inherits its properties from the //* GPTScriptGenerator class
 class GPTScriptGeneratorCustomizable extends GPTScriptGenerator {
   #modelSystemMessage;
+  #model;
   constructor() {
     super();
-    this.#modelSystemMessage = this.systemMessage;
+    this.#modelSystemMessage = super.systemMessage;
+    this.#model = super.getGenerativeModel();
   }
 
   //The method generates a content based on parameters passed as an object.
@@ -17,7 +19,7 @@ class GPTScriptGeneratorCustomizable extends GPTScriptGenerator {
     { genre, toneOfVoice, targetAudience, narrativeStyle, duration, language }
   ) {
     try {
-      const result = await this.OpenAiGPT.chat.completions.create({
+      const result = await this.OpenAIGPT.chat.completions.create({
         messages: [
           {
             role: "system",
@@ -31,7 +33,7 @@ class GPTScriptGeneratorCustomizable extends GPTScriptGenerator {
             Remember, the video is a no-face, short-video format, focusing on the narrative and AI-generated visuals to maintain viewer attention throughout. The video script must be in ${language} language`,
           },
         ],
-        model: this.model,
+        model: this.#model,
       });
       if (
         result.choices[0].message.content.length &&
@@ -54,26 +56,33 @@ class GPTScriptGeneratorCustomizable extends GPTScriptGenerator {
       }
     } catch (e) {
       throw new Error(
-        "Ideas Generator module failed to generate ideas: ",
+        "Script generative model failed to generate content: ",
         e.message
       );
     }
   }
 
-  getSystemMessage() {
-    return this.systemMessage;
-  }
-
   getModelSystemMessage() {
-    return this.#modelSystemMessage;
+    try {
+      return this.#modelSystemMessage;
+    } catch (e) {
+      throw new Error("Error getting generative model: ", e.message);
+    }
+  }
+  getGenerativeModel() {
+    try {
+      return this.#model;
+    } catch (e) {
+      throw new Error("Error getting generative model: ", e.message);
+    }
   }
 
-  setGenerativeModel(model) {
+  setGenerativeModel(newModel) {
     if (model.length > 4) {
-      this.model = model;
-    } else if (model.length < 4) {
+      this.#model = newModel;
+    } else if (newModel.length < 4) {
       throw new Error(
-        `Error in Ideas Generator module, not a valid GPT model: ${model} Provide a valid GPT model`
+        `Error in Ideas Generator module, not a valid GPT model: ${newModel} Provide a valid GPT model`
       );
     }
   }

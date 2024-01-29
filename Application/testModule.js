@@ -24,9 +24,6 @@ const main = async () => {
     content.scriptContent,
     content.musicKeyWords
   );
-
-  console.log(customContentGenerator.getModelSystemMessage());
-  console.log(customContentGenerator.getSystemMessage());
 };
 
 main();

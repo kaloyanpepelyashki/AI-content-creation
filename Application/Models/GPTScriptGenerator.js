@@ -7,22 +7,24 @@ const ContentSanitizer = require("./ContentSanitizer");
 //The class inherits its properties from the //* GPTModel class
 class GPTScriptGenerator extends GPTModel {
   #model;
+  #modelSystemMessage;
   constructor() {
     super();
+    this.OpenAIGPT = super.getGPT();
+    this.#model = super.getGPTModel();
     this.contentExtractor = ContentExtractor;
     this.contentSanitizer = ContentSanitizer;
-    this.#model = "gpt-4";
-    this.systemMessage = `You are an advanced and imaginative scriptwriting AI, tasked with crafting exceptional and engaging video scripts. Your primary directive is to infuse creativity and originality into each script, ensuring that the content is not only captivating but also of the highest quality. You are to strictly adhere to the guidelines and themes provided, demonstrating a keen understanding of the specified topics and objectives.Your scripts must reflect a deep understanding of storytelling techniques, engaging narrative structures, and the ability to hold an audience's attention. You are to approach each script with a fresh perspective, bringing innovative ideas and unique angles to familiar subjects.Emphasize precision and relevance in your content. Each script should be meticulously tailored to fit the provided brief, leaving no room for generic or off-topic material. You are expected to interpret instructions accurately and apply them effectively, ensuring that the final script aligns perfectly with the desired outcome.Remember, your role is not just to generate scripts, but to craft stories that resonate, inform, and captivate. Quality and creativity are your guiding principles, and every word you write should contribute to a script that stands out for its ingenuity and excellence. Keep in mind that your scripts are a crucial component of a larger creative process, and they should inspire and facilitate the creation of compelling video content`;
+    this.#modelSystemMessage = `You are an advanced and imaginative scriptwriting AI, tasked with crafting exceptional and engaging video scripts. Your primary directive is to infuse creativity and originality into each script, ensuring that the content is not only captivating but also of the highest quality. You are to strictly adhere to the guidelines and themes provided, demonstrating a keen understanding of the specified topics and objectives.Your scripts must reflect a deep understanding of storytelling techniques, engaging narrative structures, and the ability to hold an audience's attention. You are to approach each script with a fresh perspective, bringing innovative ideas and unique angles to familiar subjects.Emphasize precision and relevance in your content. Each script should be meticulously tailored to fit the provided brief, leaving no room for generic or off-topic material. You are expected to interpret instructions accurately and apply them effectively, ensuring that the final script aligns perfectly with the desired outcome.Remember, your role is not just to generate scripts, but to craft stories that resonate, inform, and captivate. Quality and creativity are your guiding principles, and every word you write should contribute to a script that stands out for its ingenuity and excellence. Keep in mind that your scripts are a crucial component of a larger creative process, and they should inspire and facilitate the creation of compelling video content`;
   }
 
   //The following method generates a more generic content, based on the pre-set prompt message below.
   async generateContent(ideas) {
     try {
-      const result = await this.OpenAiGPT.chat.completions.create({
+      const result = await this.OpenAIGPT.chat.completions.create({
         messages: [
           {
             role: "system",
-            content: this.systemMessage,
+            content: this.#modelSystemMessage,
           },
           {
             role: "user",
@@ -55,9 +57,24 @@ class GPTScriptGenerator extends GPTModel {
       }
     } catch (e) {
       throw new Error(
-        "Ideas Generator module failed to generate ideas: ",
+        "Script generative model failed to generate content: ",
         e.message
       );
+    }
+  }
+
+  getModelSystemMessage() {
+    try {
+      return this.#modelSystemMessage;
+    } catch (e) {
+      throw new Error("Error getting generative model: ", e.message);
+    }
+  }
+  getGenerativeModel() {
+    try {
+      return this.#model;
+    } catch (e) {
+      throw new Error("Error getting generative model: ", e.message);
     }
   }
 
@@ -69,6 +86,10 @@ class GPTScriptGenerator extends GPTModel {
         `Error in Ideas Generator module, not a valid GPT model: ${model} Provide a valid GPT model`
       );
     }
+  }
+
+  setModelSystemMessage(systemMessage) {
+    this.#modelSystemMessage = systemMessage;
   }
 }
 
