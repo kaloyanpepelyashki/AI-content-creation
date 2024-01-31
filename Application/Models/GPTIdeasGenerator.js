@@ -1,4 +1,4 @@
-const GPTModel = require("./GPTModel");
+import GPTModel from "./GPTModel.mjs";
 
 class GPTIdeasGenerator extends GPTModel {
   constructor() {
@@ -69,4 +69,4 @@ class GPTIdeasGenerator extends GPTModel {
   }
 }
 
-module.exports = GPTIdeasGenerator;
+export default GPTIdeasGenerator;
