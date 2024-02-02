@@ -16,7 +16,7 @@ const main = async () => {
     }
   );
 
-  const generatedVideoMaterial = videoGenerator.generateVideo(
+  const generatedVideoMaterial = await videoGenerator.generateVideo(
     scriptContent.scriptContent,
     scriptContent.musicKeyWords
   );
