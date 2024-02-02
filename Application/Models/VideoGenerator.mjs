@@ -1,3 +1,4 @@
+import VideoModel from "./Video-generativeModel.mjs";
 import dotenv from "dotenv";
 import axios from "axios";
 
@@ -6,42 +7,9 @@ dotenv.config();
 /** A class that provides access point to the fliki.ai video generative model. The class serves the purpose of providing an entry point to a video-generative model
  * Behind the scenes the class contacts the fliki.ai API endpoints for passing textual content that is to be transformed into a video content
  */
-class VideoGenerator {
-  #APIKey;
-  #URL;
+class VideoGenerator extends VideoModel {
   constructor() {
-    this.#APIKey = process.env.FLIKI_APIKEY;
-    this.#URL = "https://api.fliki.ai/v1";
-  }
-
-  //This method contacts the fliki.ai API endpoints
-  //The method may and is only used whithin this class' members
-  async #callAPI({ method, endpoint, params = null }) {
-    try {
-      const request = {
-        method,
-        url: `${this.#URL}${endpoint}`,
-        headers: {
-          Authorization: `Bearer ${this.#APIKey}`,
-          "Content-Type": "application/json",
-        },
-      };
-      if (params) {
-        request.data = params;
-      }
-
-      const { data } = await axios(request);
-
-      console.log(`Data in callApi method for ${endpoint}: ${data}`);
-      if (data) {
-        return data;
-      } else {
-        return null;
-      }
-    } catch (e) {
-      console.log(`Error getting from ${endpoint}. Error: ${e.message}`);
-      throw `Error getting from ${endpoint}. Error: ${e.message}`;
-    }
+    super();
   }
 
   //This method checks the status of the genrated video.
@@ -52,9 +20,10 @@ class VideoGenerator {
         setTimeout(resolve, seconds * 1000);
       });
     };
+
     try {
       if (id && id.length > 0) {
-        const status = await this.#callAPI({
+        const status = await super.callAPI({
           method: "post",
           endpoint: "/generate/status",
           params: { id },
@@ -83,7 +52,7 @@ class VideoGenerator {
   async generateVideo(videoScript, musicKeywords) {
     try {
       const voiceId = "64ea1f53310bccff6a419175"; //Brigitte, Danish
-      const generate = await this.#callAPI({
+      const generate = await super.callAPI({
         method: "post",
         endpoint: "/generate",
         params: {
@@ -110,7 +79,7 @@ class VideoGenerator {
       console.log("generate ", generate);
       return await this.checkStatus(generate.data.id);
     } catch (e) {
-      console.log("Error generating video: ", e.message);
+      console.log("Error generating video: ", e);
       throw new Error("Error generating video: ", e);
     }
   }

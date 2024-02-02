@@ -6,7 +6,7 @@ const main = async () => {
   const videoGenerator = new VideoGenerator();
 
   const scriptContent = await scriptGenerator.generateCustomContent(
-    "The invetion of BlueTooth",
+    "The invetion of AI",
     {
       genre: "informative",
       toneOfVoice: "enthusiastic",
