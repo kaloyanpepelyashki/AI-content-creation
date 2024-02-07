@@ -6,14 +6,15 @@ const main = async () => {
   const videoGenerator = new VideoGenerator();
 
   const scriptContent = await scriptGenerator.generateCustomContent(
-    "The invetion of AI",
+    "History of the nokia 3310",
     {
-      genre: "informative",
-      toneOfVoice: "enthusiastic",
-      narrativeStyle: "direct",
-      duration: "65-75",
+      genre: "informative/educational",
+      toneOfVoice: "informative, technical and yet enthusiastic",
+      narrativeStyle: "objective, descriptive and direct",
+      duration: "45",
       language: "english",
-    }
+    },
+    1.2
   );
 
   const generatedVideoMaterial = await videoGenerator.generateVideo(

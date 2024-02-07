@@ -60,10 +60,11 @@ class DataFedModel {
     }
   }
   /** This method is the main entry point to prompt the LLM.
-   * The method takes in a messages{} object, that consists of the system message prompt, and the user message prompt.
+   * The method takes in two arguments a temperature integer/double that will set the model's temperature and a messages{} object, that consists of the system message prompt, and the user message prompt.
    * On success, the method will return the prompt result text content
-   * */
+   */
   async create({
+    temperature,
     messages: {
       system: { message: systemMessage },
       user: { message: userMessage },
@@ -72,6 +73,8 @@ class DataFedModel {
     try {
       const model = this.#model;
       const parser = this.#outputParser;
+      temperature > 0 ? (model.temperature = temperature) : " ";
+      console.log(model.temperature);
 
       const contentChunks = await this.#loadDocs();
       const vectorStoreRetreiver = await this.#vectoreStoreCreate(
