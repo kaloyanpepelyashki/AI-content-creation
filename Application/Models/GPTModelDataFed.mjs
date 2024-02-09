@@ -31,7 +31,11 @@ class DataFedModel {
     });
 
     //Assigns the AI model to be used
-    this.#model = new ChatOpenAI({ modelName: "gpt-4", temperature: 1 });
+    this.#model = new ChatOpenAI({
+      modelName: "gpt-4",
+      temperature: 1,
+      topP: 0.9,
+    });
     //Assigns the text parser to be used
     this.#outputParser = formatDocumentsAsString;
   }
@@ -74,7 +78,6 @@ class DataFedModel {
       const model = this.#model;
       const parser = this.#outputParser;
       temperature > 0 ? (model.temperature = temperature) : " ";
-      console.log(model.temperature);
 
       const contentChunks = await this.#loadDocs();
       const vectorStoreRetreiver = await this.#vectoreStoreCreate(

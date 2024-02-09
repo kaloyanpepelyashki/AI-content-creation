@@ -58,5 +58,9 @@ class GPTScriptGeneratorDataFed {
       );
     }
   }
+
+  getModel() {
+    return this.#model;
+  }
 }
 export default GPTScriptGeneratorDataFed;
